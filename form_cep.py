@@ -1,44 +1,74 @@
 import tkinter as tk
-from form import *
+from consulta_cep import *
 
 class Form_cep:
 
     def interface(self):
         
+
+        def procura_cep():
+           
+           endereco=Consulta_cep().consulta(cep.get())
+           
+           logadouro.delete(0, 'end')
+           logadouro.insert(0, endereco['end'])
+           logadouro['bg'] = '#F3F781'
+           
+           bairro.delete(0, 'end')
+           bairro.insert(0, endereco['bairro'])
+           bairro['bg'] = '#F3F781'
+           
+           cidade.delete(0, 'end')
+           cidade.insert(0, endereco['cidade'])
+           cidade['bg'] = '#F3F781'
+           
+           estado.delete(0, 'end')
+           estado.insert(0, endereco['uf'])
+           estado['bg'] = '#F3F781'
+
+
         janela = tk.Tk()
+        janela['bg'] = '#F2F2F2'
         janela.title("Endereco")
 
-        
+        cep = tk.Entry(janela)
+        cep.place(x= 100, y=50,width=100)
+        lbCep = tk.Label(janela, text='CEP: ')
+        lbCep['bg'] = '#F2F2F2'
+        lbCep.place(x = 25, y=50)
 
-def main():
+        logadouro = tk.Entry(janela)
+        logadouro.place(x= 100, y=100,width=300)
+        lbLog = tk.Label(janela, text='Logadouro: ')
+        lbLog['bg'] = '#F2F2F2'
+        lbLog.place(x = 25, y=100)
 
-    def bt_click():
-        #janelinha = tk.Tk()
-        #janelinha.title("Janelinha invocada")
-        lb["text"] = "funcionou!!"
+        bairro = tk.Entry(janela)
+        bairro.place(x= 100, y=150,width=300)
+        lbBairro = tk.Label(janela, text='Bairro: ')
+        lbBairro['bg'] = '#F2F2F2'
+        lbBairro.place(x = 25, y=150)
 
+        cidade = tk.Entry(janela)
+        cidade.place(x= 100, y=200,width=300)
+        lbCity = tk.Label(janela, text='Cidade: ')
+        lbCity['bg'] = '#F2F2F2'
+        lbCity.place(x = 25, y=200)
 
-    janela = tk.Tk()
-    janela.title("teste de titulo")
-    #janela["bg"] = "red"
-    #lb = tk.Label(janela,text = "Teste de Label")
-    
-    lb = tk.Label(janela, text = "teste do Label")
-    lb.place(x=100,y=150)    
+        estado = tk.Entry(janela)
+        estado.place(x= 100, y=250,width=300)
+        lbState = tk.Label(janela, text='Estado: ')
+        lbState['bg'] = '#F2F2F2'
+        lbState.place(x = 25, y=250)
 
-    bt = tk.Button(janela, width=20, text="OK", command = janelaTest )
-    
-    #gerenciador de layout place
-    bt.place(x = 100, y = 100)
-    #lb.place(x=100, y=100)
+        btProcuraCep = tk.Button(janela, text = "Procurar",command = procura_cep )
+        btProcuraCep.place(x = 170, y=280)
 
-    #gerenciador de layout
-    
-    #gerenciador de layout
-   
-    janela.geometry("800x400")
+        btConfirmar = tk.Button(janela, text = "Confirmar")
+        btConfirmar.place(x = 250, y=280)
 
-    janela.mainloop()
+        btVoltar = tk.Button(janela,text = "Voltar")
+        btVoltar.place(x = 340, y=280)
 
-def janelaTest():
-    Form().janela()
+        janela.geometry('450x350')
+        janela.mainloop()

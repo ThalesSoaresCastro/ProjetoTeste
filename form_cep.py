@@ -31,6 +31,10 @@ class Form_cep:
         janela['bg'] = '#F2F2F2'
         janela.title("Endereco")
 
+        lbJanela = tk.Label(janela, text = 'Cadastro de Endereco')
+        lbJanela['bg'] = '#F2F2F2'
+        lbJanela.place(x = 170, y = 25)
+
         cep = tk.Entry(janela)
         cep.place(x= 100, y=50,width=100)
         lbCep = tk.Label(janela, text='CEP: ')

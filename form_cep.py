@@ -4,28 +4,26 @@ from consulta_cep import *
 class Form_cep:
 
     def interface(self):
-        
 
         def procura_cep():
-           
-           endereco=Consulta_cep().consulta(cep.get())
-           
-           logadouro.delete(0, 'end')
-           logadouro.insert(0, endereco['end'])
-           logadouro['bg'] = '#F3F781'
-           
-           bairro.delete(0, 'end')
-           bairro.insert(0, endereco['bairro'])
-           bairro['bg'] = '#F3F781'
-           
-           cidade.delete(0, 'end')
-           cidade.insert(0, endereco['cidade'])
-           cidade['bg'] = '#F3F781'
-           
-           estado.delete(0, 'end')
-           estado.insert(0, endereco['uf'])
-           estado['bg'] = '#F3F781'
-
+        
+            endereco=Consulta_cep().consulta(cep.get())
+            
+            logadouro.delete(0, 'end')
+            logadouro.insert(0, endereco['end'])
+            logadouro['bg'] = '#F3F781'
+            
+            bairro.delete(0, 'end')
+            bairro.insert(0, endereco['bairro'])
+            bairro['bg'] = '#F3F781'
+            
+            cidade.delete(0, 'end')
+            cidade.insert(0, endereco['cidade'])
+            cidade['bg'] = '#F3F781'
+            
+            estado.delete(0, 'end')
+            estado.insert(0, endereco['uf'])
+            estado['bg'] = '#F3F781'
 
         janela = Tk()
         janela['bg'] = '#F2F2F2'
@@ -42,6 +40,9 @@ class Form_cep:
         lbCep = Label(janela, text='CEP: ')
         lbCep['bg'] = '#F2F2F2'
         lbCep.place(x = 25, y=50)
+        #lbCep.pack(anchor = NW)
+        #cep.pack(anchor = W)
+        
 
         logadouro = Entry(janela)
         logadouro.place(x= 100, y=100,width=300)
@@ -78,3 +79,6 @@ class Form_cep:
 
         janela.geometry('450x350')
         janela.mainloop()
+
+
+
